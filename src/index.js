@@ -4,8 +4,8 @@ const { fetchprice } = require('./app');
 
 const app = express();
 
-app.get('/price/:id', function(req,res) {
-    let priceFetcher = fetchprice(req.params.id);
+app.get('/price/:set/:id', function(req,res) {
+    let priceFetcher = fetchprice(req.params.set + "/" + req.params.id);
     priceFetcher.subscribe(
 	price => {
 	    res.status(200).end(price);

@@ -10,10 +10,10 @@ function getprice(data) {
 }
 
 function fetchprice(id) {
-    let idimpl = decodeURIComponent(id);
+    let idimpl = encodeURIComponent(id);
     
     return fromPromise(new Promise( (resolve,reject) => {
-	https.get('https://tcgrepublic.com/product/text_search.html?q=' + id,
+	https.get('https://tcgrepublic.com/product/text_search.html?q=' + idimpl,
 		  res => {
 		      let buffer = [];
 		      const { statusCode } = res;
