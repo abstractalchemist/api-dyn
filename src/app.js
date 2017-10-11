@@ -2,7 +2,7 @@ const { JSDOM } = require('jsdom');
 const { Observable } = require('rx');
 const https = require('https');
 const { create,fromPromise,just } = Observable;
-const { URL } = require('url');
+const url = require('url');
 
 function getprice(data) {
     let dom = new JSDOM(data);
@@ -22,9 +22,9 @@ function fetchprice(id) {
     if(obj)
 	return just(obj.data);
     return fromPromise(new Promise( (resolve,reject) => {
-	let url = new URL('https://tcgrepublic.com/product/text_search.html?q=' + idimpl);
-	console.log(url.toString());
-	https.get(url,
+	let theUrl = url.parse('https://tcgrepublic.com/product/text_search.html?q=' + idimpl);
+	console.log(theUrl.toString());
+	https.get(theUrl,
 		  res => {
 		      let buffer = [];
 		      const { statusCode } = res;
