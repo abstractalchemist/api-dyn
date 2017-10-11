@@ -1,4 +1,4 @@
-FROM arm32v5/alpine
+FROM arm32v6/alpine
 RUN apk update --no-cache && \
     apk add nodejs && \
     mkdir /www
