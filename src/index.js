@@ -21,8 +21,9 @@ app.get('/price/:set/:id', function(req,res) {
 	    price => {
 		res.status(200).end(price);
 	    },
-	    _ => {
-		res.send(404).end();
+	    err => {
+		console.log(err);
+		res.status(404).end();
 	    },
 	    _ => {
 	    })
