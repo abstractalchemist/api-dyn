@@ -44,4 +44,6 @@ else {
     })
 
     app.listen(8080);
+
+    console.log(`Worker ${process.pid} started`);
 }
